@@ -77,7 +77,12 @@ int plot_vector(char* filename, int num_units, int* vector)
 
 int main(int argc, char** argv) {
 
-	int vector[3] = { 0,1,2 };
-  plot_vector("example.pdf", 1, vector);
+  int* vector=new int[argc-1];
+  for (int i=1;i<argc;++i) {
+    vector[i-1] = atoi(argv[i]);
+  }
+  plot_vector("example.pdf", (argc-1)/2, vector);
+
+  delete[] vector;
 
 }
